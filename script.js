@@ -95,6 +95,15 @@ document.addEventListener("DOMContentLoaded", function() {
         langSelect.value = lang;
         langSelect.addEventListener("change", (e) => setLanguage(e.target.value));
     }
+
+    const savedTheme = localStorage.getItem("hqTheme") || "light";
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", toggleTheme);
+    }
 });
     // Initialize game
     function initializeGame() {
@@ -806,4 +815,17 @@ function updateXPDisplay() {
     if (!gameState.startDate) {
         gameState.startDate = new Date().toISOString();
         saveGameState();
+    }
+
+    function toggleTheme() {
+        const dark = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('hqTheme', dark ? 'dark' : 'light');
+    }
+
+    function resetGame() {
+        if (confirm('Вы уверены, что хотите сбросить все данные?')) {
+            localStorage.removeItem('healthQuestState');
+            localStorage.removeItem('hqTheme');
+            location.reload();
+        }
     }

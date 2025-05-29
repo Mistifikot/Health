@@ -1,12 +1,31 @@
         /* General Styles */
         * { box-sizing: border-box; }
-        body { 
-            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #34495e; 
-            display: flex; 
-            min-height: 100vh; 
+
+        :root {
+            --bg-start: #f5f7fa;
+            --bg-end: #c3cfe2;
+            --text-color: #34495e;
+            --sidebar-start: #2c3e50;
+            --sidebar-end: #34495e;
+            --card-bg: rgba(52, 73, 94, 0.5);
+        }
+
+        body.dark-mode {
+            --bg-start: #1b262c;
+            --bg-end: #000000;
+            --text-color: #ecf0f1;
+            --sidebar-start: #0f2027;
+            --sidebar-end: #203a43;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
         }
 
         .menu-toggle {
@@ -20,11 +39,11 @@
         }
 
         /* Sidebar Styles */
-        .sidebar { 
-            width: 350px; 
-            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
-            color: #ecf0f1; 
-            padding: 25px; 
+        .sidebar {
+            width: 350px;
+            background: linear-gradient(180deg, var(--sidebar-start) 0%, var(--sidebar-end) 100%);
+            color: #ecf0f1;
+            padding: 25px;
             box-shadow: 3px 0 15px rgba(0,0,0,0.2); 
             display: flex; 
             flex-direction: column; 
@@ -49,7 +68,7 @@
         
         /* Health Tree Visualization */
         .health-tree-container {
-            background: rgba(52, 73, 94, 0.5);
+            background: var(--card-bg);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -86,10 +105,10 @@
         }
         
         /* User Stats */
-        .sidebar .user-stats { 
-            margin-bottom: 20px; 
-            padding: 20px; 
-            background: rgba(52, 73, 94, 0.5);
+        .sidebar .user-stats {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--card-bg);
             border-radius: 10px;
             backdrop-filter: blur(10px);
         }
@@ -144,13 +163,13 @@
         }
         
         /* Quote of the Day */
-        .sidebar .quote-of-the-day { 
-            font-size: 0.9em; 
-            font-style: italic; 
-            color: #bdc3c7; 
-            margin-top: 20px; 
+        .sidebar .quote-of-the-day {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #bdc3c7;
+            margin-top: 20px;
             padding: 15px;
-            background: rgba(52, 73, 94, 0.3);
+            background: var(--card-bg);
             border-radius: 8px;
             text-align: center;
             line-height: 1.4;
@@ -758,7 +777,12 @@
             background: linear-gradient(135deg, #d4efdf 0%, #abebc6 100%);
             border-color: #27ae60;
         }
-        
+
+        /* Dark mode specific tweaks */
+        body.dark-mode .sidebar .xp-bar-container {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .menu-toggle {
