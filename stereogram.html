@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор Стереограмм</title>
+    <link rel="stylesheet" href="stereogram.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Генератор Стереограмм</h1>
+        <p>Загрузите карту глубины (изображение в градациях серого), чтобы создать стереограмму.</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="depthmap-upload">1. Загрузите карту глубины:</label>
+                <input type="file" id="depthmap-upload" accept="image/*">
+            </div>
+
+            <div class="control-group">
+                <label for="pattern-upload">2. Загрузите узор (необязательно):</label>
+                <input type="file" id="pattern-upload" accept="image/*">
+            </div>
+
+            <button id="generate-btn">Сгенерировать</button>
+        </div>
+
+        <p id="error-message" class="error"></p>
+
+        <canvas id="stereogram-canvas"></canvas>
+
+        <a href="index.html">Назад к Квесту к Здоровью</a>
+    </div>
+
+    <script src="stereogram.js"></script>
+</body>
+</html>
